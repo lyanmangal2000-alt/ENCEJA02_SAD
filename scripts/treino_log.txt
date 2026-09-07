@@ -1,0 +1,63 @@
+[treino] Preparando conjuntos de treino/teste...
+[features] Base processada: 46,171 | exames completos p/ treino: 36,059
+[features] Treino: 28,847 | Teste: 7,212 (estratificado por TP_CERTIFICACAO)
+
+[treino] Buscando melhor configuração (validação cruzada)...
+  [1/28] k= 3 peso=uniform  dist=euclidean → RMSE(CV) = 21.77
+  [2/28] k= 5 peso=uniform  dist=euclidean → RMSE(CV) = 20.66
+  [3/28] k= 7 peso=uniform  dist=euclidean → RMSE(CV) = 20.16
+  [4/28] k= 9 peso=uniform  dist=euclidean → RMSE(CV) = 19.89
+  [5/28] k=11 peso=uniform  dist=euclidean → RMSE(CV) = 19.70
+  [6/28] k=15 peso=uniform  dist=euclidean → RMSE(CV) = 19.49
+  [7/28] k=21 peso=uniform  dist=euclidean → RMSE(CV) = 19.33
+  [8/28] k= 3 peso=distance dist=euclidean → RMSE(CV) = 22.92
+  [9/28] k= 5 peso=distance dist=euclidean → RMSE(CV) = 22.15
+  [10/28] k= 7 peso=distance dist=euclidean → RMSE(CV) = 21.82
+  [11/28] k= 9 peso=distance dist=euclidean → RMSE(CV) = 21.64
+  [12/28] k=11 peso=distance dist=euclidean → RMSE(CV) = 21.51
+  [13/28] k=15 peso=distance dist=euclidean → RMSE(CV) = 21.37
+  [14/28] k=21 peso=distance dist=euclidean → RMSE(CV) = 21.27
+  [15/28] k= 3 peso=uniform  dist=manhattan → RMSE(CV) = 21.78
+  [16/28] k= 5 peso=uniform  dist=manhattan → RMSE(CV) = 20.67
+  [17/28] k= 7 peso=uniform  dist=manhattan → RMSE(CV) = 20.15
+  [18/28] k= 9 peso=uniform  dist=manhattan → RMSE(CV) = 19.89
+  [19/28] k=11 peso=uniform  dist=manhattan → RMSE(CV) = 19.72
+  [20/28] k=15 peso=uniform  dist=manhattan → RMSE(CV) = 19.49
+  [21/28] k=21 peso=uniform  dist=manhattan → RMSE(CV) = 19.33
+  [22/28] k= 3 peso=distance dist=manhattan → RMSE(CV) = 22.98
+  [23/28] k= 5 peso=distance dist=manhattan → RMSE(CV) = 22.21
+  [24/28] k= 7 peso=distance dist=manhattan → RMSE(CV) = 21.86
+  [25/28] k= 9 peso=distance dist=manhattan → RMSE(CV) = 21.67
+  [26/28] k=11 peso=distance dist=manhattan → RMSE(CV) = 21.55
+  [27/28] k=15 peso=distance dist=manhattan → RMSE(CV) = 21.40
+  [28/28] k=21 peso=distance dist=manhattan → RMSE(CV) = 21.29
+
+[treino] Melhor configuração: k=21, peso=uniform, distância=manhattan (RMSE CV = 19.33) — 140.1s
+
+[treino] Treinando modelo final e avaliando no teste...
+[treino] Linguagens e Códigos   MAE=20.62  RMSE=25.91
+[treino] Matemática             MAE=20.59  RMSE=25.94
+[treino] Ciências da Natureza   MAE=20.30  RMSE=25.59
+[treino] Ciências Humanas       MAE=20.26  RMSE=25.67
+[treino] Redação                MAE= 1.84  RMSE= 2.32
+[treino] MÉDIA GLOBAL              MAE=16.72  RMSE=21.09
+
+[treino] Treinando classificador auxiliar de aprovação...
+[treino] Classificador de aprovação (≥3/4 áreas): acurácia = 71.5%
+              precision    recall  f1-score   support
+
+           0       0.76      0.89      0.82      5200
+           1       0.48      0.26      0.34      2012
+
+    accuracy                           0.71      7212
+   macro avg       0.62      0.58      0.58      7212
+weighted avg       0.68      0.71      0.68      7212
+
+
+[treino] Modelo serializado: /home/z/my-project/download/projeto_knn_encceja/modelos/modelo_knn.joblib
+[treino] Metadados salvos: /home/z/my-project/download/projeto_knn_encceja/modelos/metadados_modelo.json
+[export] metricas_modelo.json salvo
+/home/z/my-project/download/projeto_knn_encceja/src/treino_knn.py:259: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  .apply(lambda g: g.sample(min(len(g), max(2, config.N_AMOSTRA_DASHBOARD
+[export] dados_dashboard.json salvo (2,937 amostras + agregados)
+[export] preprocessador_dashboard.joblib salvo

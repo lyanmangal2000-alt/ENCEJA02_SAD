@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Dados volumosos (microdados oficiais do INEP NÃO devem ir ao GitHub —
+# baixe em https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/microdados/encceja)
+data/MICRODADOS_ENCCEJA_2024_REG_NAC.csv
+data/*.zip
+data/*.rar
+
+# Base sintética e processada são reprodutíveis via scripts
+data/MICRODADOS_ENCCEJA_2024_REG_NAC_SINTETICO.csv
+data/base_processada.csv
+
+# Artefatos de modelo (reproducíveis via treino_knn.py)
+modelos/*.joblib
+
+# Sistema
+.DS_Store
+Thumbs.db
