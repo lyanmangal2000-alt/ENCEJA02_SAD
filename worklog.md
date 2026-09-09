@@ -74,3 +74,23 @@ Stage Summary:
 - Interface restaurada e validada; causa raiz documentada (servidor parado + artefatos ausentes)
 - Entregáveis novos: Guia_Execucao_VSCODE_SAD_ENCCEJA.pdf (8 págs, PASS) + .html fonte; dashboard_encceja_nextjs.zip validado; projeto_knn_encceja.zip completo com modelo treinado
 - Serviços ativos: Next.js :3000 · Streamlit :8501
+
+---
+Task ID: 5
+Agent: main (Super Z)
+Task: Re-verificação da interface + roteiro de vídeo DOCX (novo pedido do usuário)
+
+Work Log:
+- Re-diagnóstico: servidores Next.js :3000 e Streamlit :8501 ativos e HTTP 200; navegador validou 5 abas, preset "alto risco" (76-81 pts, "Alto risco de reprovação") e console sem erros — interface 100% funcional
+- AskUserQuestion (6 perguntas): 5-7 min · só Dashboard Next.js · fala completa verbatim · tom acadêmico · DOCX · tabela de cenas
+- Skill docx carregada; lidos SKILL.md, routes/create.md, scenes/copywriting.md, references/common-rules.md, docx-js-core.md, design-system.md (paletas + estilos de tabela)
+- Números extraídos dos artefatos reais (metadados_modelo.json/metricas_modelo.json): MAE 16,72 · acurácia 71,45% · k=21/Manhattan/peso distance (decisão de negócio) · 28 configs CV 5 folds · treino 28.847/teste 7.212
+- docx@9.7.1 instalado (bun add); gerador persistido em scripts/gerar_roteiro_video.js
+- Documento: Seção 1 retrato (ficha do vídeo, checklist de 7 itens, tabela de 10 números oficiais) + Seção 2 paisagem (tabela de cenas 6 cenas × 5 colunas: Cena/Tempo/Na tela/Narração verbatim com pausas e direções/Dica) + Seção 5 pós-gravação
+- Bugs corrigidos por iteração visual (LibreOffice render): (1) colunas colapsadas por ausência de tblGrid → columnWidths em twips em todas as tabelas; (2) quebras de palavra na coluna Cena (6%→12% + nomes curtos); (3) página órfã com nota de fonte (nota movida p/ antes da tabela); (4) resíduo de tabela na pág. 3 (espaçamentos compactados: h1 300/160, células 60, checklist 60)
+- postcheck.py final: 0 erros (1 aviso de line-spacing misto — intencional: corpo 400 copywriting, células 260-280)
+
+Stage Summary:
+- Entregável: download/Roteiro_Video_AV1_SAD_ENCCEJA.docx (6 págs: 2 retrato + 4 paisagem), ~830 palavras de fala ≈ 6:30
+- Serviços ativos: Next.js :3000 · Streamlit :8501; screenshot verificacao_dashboard.png em download/
+- Roteiro alinhado ao dashboard real: nomes das abas, presets, corte 100, 21 vizinhos, MAE/acurácia exatos
