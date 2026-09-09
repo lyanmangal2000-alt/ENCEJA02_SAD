@@ -1,0 +1,274 @@
+    <!-- ======= 3. STREAMLIT ======= -->
+    <div class="chapter-header">
+        <div class="sec-tag">Seção 3</div>
+        <div class="sec-title">Interface 1 — App Streamlit (Python)</div>
+        <div class="divider"></div>
+    </div>
+    <div class="body-text">
+        Esta é a interface principal do trabalho acadêmico: ela executa o
+        modelo K-NN treinado pelo pipeline e gera o parecer gerencial
+        automaticamente. Todo o processo acontece no terminal integrado do
+        VSCode, que você abre com o atalho <b>Ctrl + `</b> (ou menu
+        <b>Terminal → New Terminal</b>). Os comandos abaixo devem ser executados
+        dentro da pasta <b>projeto_knn_encceja</b>, aberta no VSCode por
+        <b>File → Open Folder</b>.
+    </div>
+
+    <div class="step">
+        <div class="step-n">1</div>
+        <div class="step-body">
+            <div class="st">Criar o ambiente virtual</div>
+            <div class="sd">O ambiente virtual isola as bibliotecas do projeto das
+            do sistema, evitando conflitos de versão. Execute uma única vez:</div>
+            <div class="code"><span class="p">&gt;</span> python -m venv .venv</div>
+        </div>
+    </div>
+    <div class="step">
+        <div class="step-n">2</div>
+        <div class="step-body">
+            <div class="st">Ativar o ambiente virtual</div>
+            <div class="sd">O comando varia conforme o sistema operacional. Após
+            ativar, o terminal passa a exibir <span class="mono">(.venv)</span> no
+            início da linha:</div>
+            <div class="code-title">Windows — PowerShell</div>
+            <div class="code"><span class="p">&gt;</span> .venv\Scripts\Activate.ps1</div>
+            <div class="code-title">Windows — Prompt de comando (cmd)</div>
+            <div class="code"><span class="p">&gt;</span> .venv\Scripts\activate.bat</div>
+            <div class="code-title">Linux / macOS</div>
+            <div class="code"><span class="p">$</span> source .venv/bin/activate</div>
+        </div>
+    </div>
+    <div class="callout amber">
+        <b>PowerShell bloqueou o script?</b> Erro comum: "a execução de scripts
+        foi desabilitada neste sistema". Resolva com
+        <span class="mono">Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
+        -Scope CurrentUser</span>, confirme com <span class="mono">S</span> e
+        repita o passo 2. Alternativa: use o terminal <b>cmd</b> do VSCode
+        (seta ao lado do botão + no painel de terminal).
+    </div>
+    <div class="step">
+        <div class="step-n">3</div>
+        <div class="step-body">
+            <div class="st">Instalar as dependências</div>
+            <div class="sd">Com o ambiente ativado, instale pandas, scikit-learn,
+            streamlit e demais bibliotecas listadas no requirements.txt
+            (leva de 1 a 3 minutos):</div>
+            <div class="code"><span class="p">(.venv) &gt;</span> pip install -r requirements.txt</div>
+        </div>
+    </div>
+    <div class="step">
+        <div class="step-n">4</div>
+        <div class="step-body">
+            <div class="st">(Opcional) Retreinar o pipeline</div>
+            <div class="sd">Se o pacote veio com as pastas
+            <span class="mono">modelos/</span> e <span class="mono">data/</span>
+            já preenchidas (arquivo <span class="mono">modelo_knn.joblib</span>
+            presente), <b>pule este passo</b>. Caso contrário, gere a base e
+            treine o modelo — o segundo comando leva alguns minutos, pois busca
+            o melhor k entre 28 configurações com validação cruzada 5-fold:</div>
+            <div class="code"><span class="p">(.venv) &gt;</span> python src/etl_preparacao.py
+<span class="p">(.venv) &gt;</span> python src/treino_knn.py</div>
+        </div>
+    </div>
+    <div class="step">
+        <div class="step-n">5</div>
+        <div class="step-body">
+            <div class="st">Iniciar a interface Streamlit</div>
+            <div class="sd">Suba o servidor local do aplicativo:</div>
+            <div class="code"><span class="p">(.venv) &gt;</span> streamlit run app/app_streamlit.py</div>
+        </div>
+    </div>
+    <div class="step">
+        <div class="step-n">6</div>
+        <div class="step-body">
+            <div class="st">Usar o sistema</div>
+            <div class="sd">O navegador abre automaticamente em
+            <b>http://localhost:8501</b> (se não abrir, copie o endereço exibido
+            no terminal). Na aba <b>Simulador de Matrícula</b>, preencha o perfil
+            do candidato e clique em <b>Prever desempenho</b> para ver as notas
+            previstas, os vizinhos consultados e o parecer com nível de risco.
+            Para encerrar, volte ao terminal e pressione
+            <span class="mono">Ctrl + C</span>.</div>
+        </div>
+    </div>
+
+    <!-- ======= 4. NEXT.JS ======= -->
+    <div class="chapter-header">
+        <div class="sec-tag">Seção 4</div>
+        <div class="sec-title">Interface 2 — Dashboard Next.js</div>
+        <div class="divider"></div>
+    </div>
+    <div class="body-text">
+        O dashboard web é a versão mais visual do SAD: cinco módulos com
+        gráficos interativos, simulador com <b>botões de preset</b> para
+        demonstração ao vivo (perfis de alto risco e favorável) e o motor K-NN
+        executando no próprio navegador. Ele não exige Python — apenas Node.js.
+        Abra a pasta <b>dashboard_encceja_nextjs</b> no VSCode e use o terminal
+        integrado.
+    </div>
+    <div class="step">
+        <div class="step-n">1</div>
+        <div class="step-body">
+            <div class="st">Instalar as dependências</div>
+            <div class="sd">Na primeira execução, o npm baixa Next.js, React,
+            Recharts e as demais bibliotecas (de 1 a 2 minutos com internet):</div>
+            <div class="code"><span class="p">&gt;</span> npm install</div>
+        </div>
+    </div>
+    <div class="step">
+        <div class="step-n">2</div>
+        <div class="step-body">
+            <div class="st">Iniciar o servidor de desenvolvimento</div>
+            <div class="sd">O modo de desenvolvimento compila sob demanda e
+            recarrega a página a cada alteração no código:</div>
+            <div class="code"><span class="p">&gt;</span> npm run dev</div>
+        </div>
+    </div>
+    <div class="step">
+        <div class="step-n">3</div>
+        <div class="step-body">
+            <div class="st">Explorar os cinco módulos</div>
+            <div class="sd">Acesse <b>http://localhost:3000</b>. Na aba
+            <b>Simulador K-NN</b>, experimente os presets <b>“Exemplo: alto
+            risco”</b> e <b>“Exemplo: favorável”</b> para ver a comparação
+            lado a lado das previsões, dos vizinhos e dos pareceres — ideal
+            para gravação do vídeo de demonstração. Para produção otimizada,
+            use <span class="mono">npm run build</span> seguido de
+            <span class="mono">npm start</span>.</div>
+        </div>
+    </div>
+
+    <!-- ======= 5. DUAS INTERFACES JUNTAS ======= -->
+    <div class="chapter-header">
+        <div class="sec-tag">Seção 5</div>
+        <div class="sec-title">Rodando as duas ao mesmo tempo</div>
+        <div class="divider"></div>
+    </div>
+    <div class="body-text">
+        As interfaces são independentes e ocupam portas diferentes (8501 e
+        3000), portanto podem rodar simultaneamente sem conflito — útil para
+        comparar resultados ou demonstrar as duas versões na gravação do vídeo.
+        No VSCode, abra um segundo terminal clicando no botão <b>+</b> no canto
+        superior direito do painel de terminal: mantenha o primeiro com o
+        ambiente virtual ativado servindo o Streamlit e use o segundo, sem
+        ambiente virtual, para o dashboard Next.js. Cada terminal exibe o
+        endereço local da sua interface, e ambos podem ser interrompidos de
+        forma independente com <span class="mono">Ctrl + C</span>.
+    </div>
+
+    <!-- ======= 6. SOLUÇÃO DE PROBLEMAS ======= -->
+    <div class="chapter-header">
+        <div class="sec-tag">Seção 6</div>
+        <div class="sec-title">Solução de problemas frequentes</div>
+        <div class="divider"></div>
+    </div>
+    <div class="body-text">
+        A tabela a seguir concentra os erros mais comuns na primeira execução,
+        com a causa provável e o comando de correção. Na grande maioria dos
+        casos o problema se resolve ativando o ambiente virtual correto ou
+        conferindo a versão das ferramentas — leia sempre a mensagem completa
+        do terminal antes de agir, pois ela indica o arquivo e a linha do erro.
+    </div>
+    <table class="tb">
+        <thead>
+            <tr><th style="width:34%">Mensagem / sintoma</th><th style="width:24%">Causa provável</th><th>Solução</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="mono">'python' não é reconhecido…</td>
+                <td>Python fora do PATH (Windows)</td>
+                <td>Reinstale marcando <b>Add Python to PATH</b> ou troque <span class="mono">python</span> por <span class="mono">py</span></td>
+            </tr>
+            <tr>
+                <td class="mono">error: externally-managed-environment</td>
+                <td>pip do sistema usado sem ambiente virtual</td>
+                <td>Crie e ative o <span class="mono">.venv</span> (passos 1–2 da Seção 3) antes do <span class="mono">pip install</span></td>
+            </tr>
+            <tr>
+                <td class="mono">running scripts is disabled on this system</td>
+                <td>Política de execução do PowerShell</td>
+                <td><span class="mono">Set-ExecutionPolicy RemoteSigned -Scope CurrentUser</span> ou use o terminal cmd</td>
+            </tr>
+            <tr>
+                <td class="mono">streamlit: command not found</td>
+                <td>Ambiente virtual inativo</td>
+                <td>Ative o <span class="mono">.venv</span> e reinstale com <span class="mono">pip install -r requirements.txt</span></td>
+            </tr>
+            <tr>
+                <td class="mono">FileNotFoundError: modelo_knn.joblib</td>
+                <td>Modelo ainda não treinado</td>
+                <td>Execute <span class="mono">python src/etl_preparacao.py</span> e <span class="mono">python src/treino_knn.py</span></td>
+            </tr>
+            <tr>
+                <td class="mono">Unsupported engine / npm ERR!</td>
+                <td>Versão do Node.js antiga</td>
+                <td>Instale o Node 20 LTS ou superior e reabra o terminal</td>
+            </tr>
+            <tr>
+                <td class="mono">Port 3000/8501 is already in use</td>
+                <td>Outro processo ocupa a porta</td>
+                <td>Next.js: <span class="mono">npm run dev -- -p 3001</span> · Streamlit: acrescente <span class="mono">--server.port 8502</span></td>
+            </tr>
+            <tr>
+                <td>Página em branco após npm run dev</td>
+                <td>Compilação ainda em andamento</td>
+                <td>Aguarde a mensagem <span class="mono">Ready</span> no terminal e recarregue o navegador (F5)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- ======= 7. CHECKLIST ======= -->
+    <div class="chapter-header">
+        <div class="sec-tag">Seção 7</div>
+        <div class="sec-title">Checklist de verificação final</div>
+        <div class="divider"></div>
+    </div>
+    <div class="body-text">
+        Percorra esta lista após concluir a instalação para garantir que o
+        ambiente está completo e pronto para a demonstração. Cada item leva
+        menos de um minuto para ser conferido e corresponde a um comportamento
+        esperado das interfaces já validadas durante o desenvolvimento — se
+        algum item falhar, volte à Seção 6 e localize a mensagem de erro
+        correspondente no terminal.
+    </div>
+    <div class="card">
+        <div class="check-item"><div class="check-box"></div><div>O Streamlit responde em <b>http://localhost:8501</b> com três abas visíveis</div></div>
+        <div class="check-item"><div class="check-box"></div><div>A previsão no Simulador retorna notas, vizinhos e um parecer com nível de risco</div></div>
+        <div class="check-item"><div class="check-box"></div><div>O dashboard responde em <b>http://localhost:3000</b> com cinco abas e gráficos renderizados</div></div>
+        <div class="check-item"><div class="check-box"></div><div>Os presets “alto risco” e “favorável” produzem pareceres vermelho e verde, respectivamente</div></div>
+        <div class="check-item"><div class="check-box"></div><div>A aba Modelo &amp; Métricas exibe MAE 16,7 e a curva de busca do k (melhor: 21)</div></div>
+    </div>
+    <div class="callout">
+        <b>Próximo nível:</b> para usar os microdados oficiais do INEP em vez da
+        base sintética, baixe o arquivo
+        <span class="mono">MICRODADOS_ENCCEJA_2024_REG_NAC.csv</span> no portal
+        do INEP, coloque-o em <span class="mono">data/</span> e repita o passo 4
+        da Seção 3 — o pipeline detecta o arquivo oficial automaticamente.
+    </div>
+
+</div>
+
+<!-- ================= ENCERRAMENTO ================= -->
+<div class="ending">
+    <div class="cover-glow"></div>
+    <div class="cover-grid"></div>
+    <div style="position: relative; z-index: 2;">
+        <div class="big">Ambiente pronto.<br><span class="gr">Decisões melhores.</span></div>
+        <div class="body-text" style="max-width: 520px; font-size: 15.5px;">
+            Com as duas interfaces rodando, você tem em mãos um sistema completo
+            de apoio à decisão: previsão de desempenho por K-NN, identificação
+            automática de risco e recomendações gerenciais acionáveis para
+            cursinhos preparatórios do ENCCEJA.
+        </div>
+        <div style="margin: 30px 0 0 0;" class="cover-stats">
+            <div class="cstat"><div class="n">:8501</div><div class="l">Streamlit — Simulador, Base Histórica, Modelo</div></div>
+            <div class="cstat"><div class="n am">:3000</div><div class="l">Next.js — 5 módulos com presets de demonstração</div></div>
+        </div>
+        <div style="margin-top: 56px; padding-top: 24px; border-top: 1px solid rgba(148,163,184,0.18); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: #94a3b8;">
+            SAD ENCCEJA · K-NN · Microdados INEP 2024 · Trabalho AV1 — Sistemas de Apoio à Tomada de Decisão
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

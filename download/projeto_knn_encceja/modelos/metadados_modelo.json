@@ -24,6 +24,18 @@
   "mae_global": 16.72,
   "rmse_global": 21.09,
   "acuracia_aprovacao": 0.7145,
+  "melhor_config": {
+    "k": 21,
+    "peso": "uniform",
+    "metrica": "manhattan",
+    "rmse_cv": 19.3254
+  },
+  "config_final": {
+    "k": 21,
+    "peso": "distance",
+    "metrica": "manhattan",
+    "rmse_cv": 19.3254
+  },
   "historico_busca": [
     {
       "k": 21,
@@ -195,17 +207,5 @@
     }
   ],
   "n_treino": 28847,
-  "n_teste": 7212,
-  "melhor_config": {
-    "k": 21,
-    "peso": "uniform",
-    "metrica": "manhattan",
-    "rmse_cv": 19.3254
-  },
-  "config_final": {
-    "k": 21,
-    "peso": "distance",
-    "metrica": "manhattan",
-    "rmse_cv": 19.3254
-  }
+  "n_teste": 7212
 }

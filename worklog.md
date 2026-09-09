@@ -55,3 +55,22 @@ Stage Summary:
 - Dashboard web 100% funcional e verificado; KNN no navegador replica o pipeline Python
 - Entregáveis: /download/projeto_knn_encceja/ (+.zip) e dashboard Next.js em /
 - Pendências: nenhuma — pronto para Complete
+
+---
+Task ID: 4
+Agent: main (Super Z)
+Task: Diagnóstico da interface + guia passo a passo VSCode (solicitação pós-entrega)
+
+Work Log:
+- Diagnóstico: servidores Next.js e Streamlit parados (ambiente resetado); Next.js reiniciado (HTTP 200, 5 abas + presets verificados no browser sem erros de console)
+- Defeito real encontrado: modelos/modelo_knn.joblib e data/*.csv ausentes na pasta do projeto (arquivos grandes não persistidos) → Streamlit abriria com FileNotFoundError ao carregar o modelo
+- Correção: pipeline completo re-executado (etl_preparacao.py + treino_knn.py) — métricas idênticas (MAE 16,72; k=21/uniform/manhattan RMSE CV 19,33; classificador 71,5%); modelo carregado e previsão validada no Streamlit (parecer "RISCO MODERADO" correto)
+- Novo pacote: download/dashboard_encceja_nextjs/ (+ .zip 163KB) — dashboard Next.js standalone com package.json enxuto (8 deps), README próprio e favicon local; validado ponta a ponta em cópia de teste (npm install → npm run dev → HTTP 200, 5 abas, zero erros)
+- projeto_knn_encceja.zip reconstruído (4MB) agora COM artefatos treinados (modelo joblib 20MB + CSVs) + GUIA_VSCODE.md; integridade verificada por extração e joblib.load
+- Guia PDF (rota Creative Flow): HTML 720×1020px dark premium → html2pdf-next.js → 8 páginas vetoriais; correções: fontes locais (Carlito + DejaVu Sans Mono — Google Fonts não renderizou a tempo), divisores 3px→6px (falso-positivo cover_validate), frase reformulada (pontuação linha-início), Seção 7 enriquecida com tabela de artefatos (fill pág. 7 32%→OK), stats da capa flex 1 1 0 (alinhados em 1 linha), numeração de páginas estampada (capa oculta, corpo 1–7), metadados Author/Title/Subject
+- QA final: pdf_qa.py --no-tables = PASS (10/10 checks); 0 caracteres corrompidos
+
+Stage Summary:
+- Interface restaurada e validada; causa raiz documentada (servidor parado + artefatos ausentes)
+- Entregáveis novos: Guia_Execucao_VSCODE_SAD_ENCCEJA.pdf (8 págs, PASS) + .html fonte; dashboard_encceja_nextjs.zip validado; projeto_knn_encceja.zip completo com modelo treinado
+- Serviços ativos: Next.js :3000 · Streamlit :8501

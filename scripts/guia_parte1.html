@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Guia de Execução no VSCode — SAD ENCCEJA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+@page {
+    size: 720px 1020px;
+    margin: 0;
+}
+:root {
+    --bg: #0f172a;
+    --panel: #16213a;
+    --panel2: #1e293b;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --accent: #34d399;
+    --amber: #fbbf24;
+    --border: rgba(148, 163, 184, 0.18);
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 720px;
+    background: #0f172a;
+    color: var(--text);
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    font-size: 15px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+}
+@media screen {
+    html {
+        height: auto;
+        display: flex;
+        justify-content: center;
+        background: #0f172a;
+    }
+    body {
+        transform-origin: top center;
+        margin: 20px auto;
+        box-shadow: 0 0 60px rgba(0,0,0,0.6);
+    }
+}
+p, td, li, .body-text {
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+/* ============ CAPA ============ */
+.cover {
+    width: 720px;
+    height: 1020px;
+    box-sizing: border-box;
+    break-after: page;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 64px;
+    background: #0f172a;
+}
+.cover-glow {
+    position: absolute;
+    top: -140px;
+    right: -120px;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(52, 211, 153, 0.16) 0%, rgba(52, 211, 153, 0) 68%);
+}
+.cover-glow2 {
+    position: absolute;
+    bottom: -160px;
+    left: -140px;
+    width: 460px;
+    height: 460px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(251, 191, 36, 0.08) 0%, rgba(251, 191, 36, 0) 70%);
+}
+.cover-grid {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: linear-gradient(rgba(148,163,184,0.05) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(148,163,184,0.05) 1px, transparent 1px);
+    background-size: 48px 48px;
+}
+.cover-inner { position: relative; z-index: 2; }
+.cover-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--accent);
+    border: 1px solid rgba(52, 211, 153, 0.4);
+    padding: 7px 16px;
+    border-radius: 999px;
+    margin-bottom: 34px;
+}
+.cover-title {
+    font-size: 58px;
+    font-weight: 900;
+    line-height: 1.04;
+    letter-spacing: -1.5px;
+    margin-bottom: 22px;
+}
+.cover-title .gr { color: var(--accent); }
+.cover-sub {
+    font-size: 16.5px;
+    color: var(--muted);
+    line-height: 1.6;
+    max-width: 520px;
+    margin-bottom: 40px;
+}
+.cover-chips { display: flex; flex-wrap: wrap; gap: 10px; max-width: 100%; margin-bottom: 48px; }
+.chip {
+    flex: 0 1 auto;
+    min-width: 90px;
+    max-width: 100%;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 16px;
+}
+.chip .t { font-size: 13px; font-weight: 700; color: var(--text); }
+.chip .d { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.cover-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    border-top: 1px solid var(--border);
+    padding-top: 28px;
+    max-width: 560px;
+}
+.cstat { flex: 1 1 auto; min-width: 120px; margin-right: 24px; }
+.cstat:last-child { margin-right: 0; }
+.cstat .n { font-size: 27px; font-weight: 800; color: var(--accent); line-height: 1.1; }
+.cstat .n.am { color: var(--amber); }
+.cstat .l { font-size: 11px; color: var(--muted); margin-top: 4px; line-height: 1.4; }
+.cover-foot {
+    position: absolute;
+    bottom: 46px;
+    left: 64px;
+    right: 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    z-index: 2;
+}
+/* ============ CONTEÚDO ============ */
+.main-content {
+    padding: 56px 58px 44px 58px;
+}
+.chapter-header {
+    break-after: avoid;
+    break-inside: avoid;
+    margin-top: 26px;
+}
+.chapter-header:first-child { margin-top: 0; }
+.sec-tag {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 2.6px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 7px;
+}
+.sec-title {
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    line-height: 1.18;
+    margin-bottom: 10px;
+}
+.divider {
+    width: 44px;
+    height: 3px;
+    background: var(--accent);
+    border-radius: 2px;
+    margin-bottom: 16px;
+}
+.body-text {
+    color: var(--text);
+    margin-bottom: 12px;
+    text-align: left;
+}
+.body-text b { color: #ffffff; }
+.muted { color: var(--muted); }
+.card {
+    break-inside: avoid;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-bottom: 12px;
+}
+.callout {
+    break-inside: avoid;
+    background: rgba(52, 211, 153, 0.07);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 10px 10px 0;
+    padding: 12px 16px;
+    font-size: 13.5px;
+    color: var(--text);
+    margin-bottom: 12px;
+}
+.callout.amber { background: rgba(251, 191, 36, 0.07); border-left-color: var(--amber); }
+.code {
+    break-inside: avoid;
+    background: #0b1120;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 13px 16px;
+    margin-bottom: 12px;
+    font-family: 'JetBrains Mono', 'Consolas', monospace;
+    font-size: 12.3px;
+    line-height: 1.68;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    word-break: break-all;
+    color: #d1e3d8;
+}
+.code .c { color: #64748b; }
+.code .p { color: var(--accent); font-weight: 500; }
+.code-title {
+    break-after: avoid;
+    break-inside: avoid;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 2px 0 7px 2px;
+}
+.step {
+    break-inside: avoid;
+    display: flex;
+    gap: 13px;
+    margin-bottom: 13px;
+}
+.step-n {
+    flex-shrink: 0;
+    width: 27px;
+    height: 27px;
+    border-radius: 50%;
+    background: rgba(52, 211, 153, 0.13);
+    border: 1px solid rgba(52, 211, 153, 0.45);
+    color: var(--accent);
+    font-weight: 800;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+}
+.step-body { flex: 1 1 auto; min-width: 0; }
+.step-body .st { font-weight: 700; font-size: 14.5px; margin-bottom: 4px; color: #fff; }
+.step-body .sd { font-size: 13.5px; color: var(--text); margin-bottom: 8px; }
+table.tb {
+    width: 100%;
+    border-collapse: collapse;
+    break-inside: avoid;
+    font-size: 12.6px;
+    margin-bottom: 12px;
+}
+table.tb thead { display: table-header-group; }
+table.tb tr { break-inside: avoid; }
+table.tb th {
+    text-align: left;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding: 8px 10px;
+    border-bottom: 1.5px solid rgba(52, 211, 153, 0.35);
+}
+table.tb td {
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    color: var(--text);
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+table.tb td.mono {
+    font-family: 'JetBrains Mono', 'Consolas', monospace;
+    font-size: 11.3px;
+    color: #d1e3d8;
+}
+.two-col {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    max-width: 100%;
+    margin-bottom: 12px;
+}
+.mini-card {
+    flex: 1 1 300px;
+    min-width: 260px;
+    max-width: 100%;
+    break-inside: avoid;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 18px;
+    box-sizing: border-box;
+}
+.mini-card .mt { font-size: 14.5px; font-weight: 800; margin-bottom: 6px; }
+.mini-card .mt .dot { color: var(--accent); }
+.mini-card .md { font-size: 13px; color: var(--muted); line-height: 1.55; }
+.check-item {
+    break-inside: avoid;
+    display: flex;
+    gap: 11px;
+    align-items: flex-start;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13.5px;
+}
+.check-item:last-child { border-bottom: none; }
+.check-box {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    border: 1.5px solid var(--accent);
+    border-radius: 4px;
+    margin-top: 3px;
+}
+/* ============ ENCERRAMENTO ============ */
+.ending {
+    width: 720px;
+    height: 1020px;
+    box-sizing: border-box;
+    break-before: page;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 64px;
+    background: #0f172a;
+}
+.ending .big {
+    font-size: 44px;
+    font-weight: 900;
+    letter-spacing: -1.2px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+.ending .big .gr { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<!-- ================= CAPA ================= -->
+<div class="cover">
+    <div class="cover-glow"></div>
+    <div class="cover-glow2"></div>
+    <div class="cover-grid"></div>
+    <div class="cover-inner">
+        <div class="cover-badge">GUIA PRÁTICO · PASSO A PASSO</div>
+        <div class="cover-title">Rodando o projeto<br>no <span class="gr">VSCode</span></div>
+        <div class="cover-sub">
+            SAD ENCCEJA — Sistema de Apoio à Decisão com o algoritmo K-NN sobre
+            microdados INEP 2024. Este guia conduz a instalação e a execução das
+            duas interfaces do projeto, do ambiente virtual até o navegador.
+        </div>
+        <div class="cover-chips">
+            <div class="chip"><div class="t">Interface 1 · Streamlit</div><div class="d">Projeto Python completo · porta 8501</div></div>
+            <div class="chip"><div class="t">Interface 2 · Next.js</div><div class="d">Dashboard web · porta 3000</div></div>
+            <div class="chip"><div class="t">Algoritmo · K-NN</div><div class="d">scikit-learn + TypeScript</div></div>
+        </div>
+        <div class="cover-stats">
+            <div class="cstat"><div class="n">16,7</div><div class="l">MAE global do modelo (escala 0–500)</div></div>
+            <div class="cstat"><div class="n am">k = 21</div><div class="l">vizinhos escolhidos por validação cruzada</div></div>
+            <div class="cstat"><div class="n">71,5%</div><div class="l">acurácia do classificador de aprovação</div></div>
+        </div>
+    </div>
+    <div class="cover-foot">
+        <span>Trabalho AV1 · Sistemas de Apoio à Tomada de Decisão</span>
+        <span>Edição 2026</span>
+    </div>
+</div>
+
+<!-- ================= CONTEÚDO ================= -->
+<div class="main-content">
+
+    <!-- ======= 1. VISÃO GERAL ======= -->
+    <div class="chapter-header">
+        <div class="sec-tag">Seção 1</div>
+        <div class="sec-title">O que você vai rodar</div>
+        <div class="divider"></div>
+    </div>
+    <div class="body-text">
+        O projeto entrega um <b>Sistema de Apoio à Decisão (SAD)</b> que prevê o
+        desempenho de novos candidatos do ENCCEJA com o algoritmo K-Nearest
+        Neighbors e converte a previsão em recomendações gerenciais para
+        cursinhos preparatórios. Ele é composto por duas interfaces
+        independentes que compartilham a mesma base de dados e a mesma lógica
+        de modelagem. Não é necessário rodar as duas para avaliar o trabalho:
+        cada uma cobre o ciclo completo de previsão e recomendação.
+    </div>
+    <div class="two-col">
+        <div class="mini-card">
+            <div class="mt"><span class="dot">●</span> Interface 1 — App Streamlit (Python)</div>
+            <div class="md">Carrega o modelo K-NN treinado pelo pipeline
+            (<span class="mono">modelo_knn.joblib</span>) e oferece três abas:
+            Simulador de Matrícula, Base Histórica e Modelo &amp; Métricas.
+            Roda em <b>http://localhost:8501</b>.</div>
+        </div>
+        <div class="mini-card">
+            <div class="mt"><span class="dot">●</span> Interface 2 — Dashboard Next.js (Web)</div>
+            <div class="md">Replica o K-NN inteiramente no navegador em
+            TypeScript, com cinco módulos: Visão Geral, Simulador K-NN (com
+            presets de demonstração), Recomendação, Análise Exploratória e
+            Modelo &amp; Métricas. Roda em <b>http://localhost:3000</b>.</div>
+        </div>
+    </div>
+    <div class="body-text">
+        O fluxo de dados é simples de entender: o <b>pipeline Python</b> lê os
+        microdados (sintéticos ou oficiais do INEP), aplica o ETL, normaliza as
+        variáveis com Z-score, treina o K-NN e serializa o modelo; o
+        <b>Streamlit</b> consome esse modelo treinado; já o <b>dashboard
+        Next.js</b> recebe uma amostra exportada da base com os parâmetros de
+        padronização e executa a mesma aritmética de vizinhos no cliente. Por
+        isso, o Streamlit depende da etapa de treinamento, enquanto o dashboard
+        web funciona imediatamente após o <span class="mono">npm install</span>.
+    </div>
+
+    <!-- ======= 2. PRÉ-REQUISITOS ======= -->
+    <div class="chapter-header">
+        <div class="sec-tag">Seção 2</div>
+        <div class="sec-title">Preparar o ambiente</div>
+        <div class="divider"></div>
+    </div>
+    <div class="body-text">
+        Antes de abrir o projeto, instale as ferramentas abaixo e confirme cada
+        instalação pelo terminal (no Windows, use o PowerShell; no macOS/Linux,
+        o terminal padrão). Se algum comando não for reconhecido, o respectivo
+        instalador normalmente oferece a opção de adicionar a ferramenta ao
+        PATH — marque essa opção durante a instalação para evitar problemas
+        mais adiante.
+    </div>
+    <table class="tb">
+        <thead>
+            <tr><th style="width:24%">Ferramenta</th><th style="width:16%">Versão</th><th style="width:28%">Como verificar</th><th>Onde baixar</th></tr>
+        </thead>
+        <tbody>
+            <tr><td><b>Python</b></td><td>3.10 ou superior</td><td class="mono">python --version</td><td>python.org/downloads</td></tr>
+            <tr><td><b>Node.js</b> (só dashboard)</td><td>20 LTS ou superior</td><td class="mono">node -v</td><td>nodejs.org</td></tr>
+            <tr><td><b>VSCode</b></td><td>versão atual</td><td class="mono">code --version</td><td>code.visualstudio.com</td></tr>
+            <tr><td><b>Git</b> (opcional)</td><td>qualquer recente</td><td class="mono">git --version</td><td>git-scm.com</td></tr>
+        </tbody>
+    </table>
+    <div class="body-text muted" style="font-size:13px">
+        Recomenda-se também instalar estas extensões do VSCode (menu de
+        extensões, atalho <b>Ctrl+Shift+X</b>): <b>Python</b> e <b>Pylance</b>
+        (intellisense e depuração do pipeline), <b>ESLint</b> e
+        <b>Tailwind CSS IntelliSense</b> (edição do dashboard). Todas são
+        gratuitas e oficiais.
+    </div>
+    <div class="callout">
+        <b>Organização das pastas:</b> extraia os dois pacotes do projeto em uma
+        mesma pasta de sua preferência (por exemplo,
+        <span class="mono">C:\Projetos\sad-encceja</span> ou
+        <span class="mono">~/projetos/sad-encceja</span>). Você deverá ver duas
+        pastas irmãs: <b>projeto_knn_encceja</b> (Python/Streamlit) e
+        <b>dashboard_encceja_nextjs</b> (Next.js).
+    </div>
+</div>
+</body>
+</html>
