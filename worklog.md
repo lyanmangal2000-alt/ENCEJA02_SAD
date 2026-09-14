@@ -130,3 +130,20 @@ Stage Summary:
 - Solução para o usuário: baixar UM arquivo — download/AV1_SAD_ENCCEJA_PACOTE_COMPLETO.zip (4,1MB) — que contém projeto + dashboard + roteiro (PDF/DOCX) + guia
 - Alternativas individuais regeneradas e íntegras: projeto_knn_encceja.zip (3,7MB), dashboard_encceja_nextjs.zip (152KB), Roteiro_Video_AV1_SAD_ENCCEJA.pdf (132KB), .docx (20KB)
 - Causa provável da falha: links antigos da sessão anterior expirados / tentativa de baixar pasta em vez de zip
+
+---
+Task ID: 8
+Agent: main (Super Z)
+Task: Investigação profunda da falha de download (pedido do usuário)
+
+Work Log:
+- Auditoria filesystem: 12 arquivos com permissões corretas (z:z, rw-rw-r--), nomes 100% ASCII, sem symlinks/quebrados; disco 21% (7,5GB livres), inodes 12%; 3 zips PASS no unzip -t; roteiro PDF 10 págs válido (pypdf)
+- Infra gateway: Caddy (root, config /app/Caddyfile ILEGÍVEL — isolamento agente/gateway); UI chat na :81 (pt-BR); Next.js :3000; portas 19005/19006 internas sem endpoints de arquivo identificáveis — mecanismo de entrega é opaco ao agente
+- Causa provável 1 encontrada: download/ continha 59 itens incluindo 2 pastas de projeto e arquivo de 20,4MB (modelo_knn.joblib) — pastas não são baixáveis e arquivos grandes podem quebrar indexação do painel
+- Causa provável 2 encontrada: pasta projeto_knn_encceja/ estava incompleta desde o reset do ambiente (modelo+CSVs ausentes) — download da pasta estaria quebrado
+- Correções: pastas projeto_knn_encceja/ e dashboard_encceja_nextjs/ movidas para /home/z/my-project/projetos/ (zips já contêm tudo); download/ agora tem 12 arquivos planos ≤4,2MB cada; criado teste_download.txt (116 bytes) como teste de isolamento
+
+Stage Summary:
+- download/ limpo: AV1_SAD_ENCCEJA_PACOTE_COMPLETO.zip (4,2MB, tudo dentro) + 2 zips + roteiro PDF/DOCX + guia PDF + teste_download.txt
+- Protocolo de isolamento sugerido ao usuário: (1) baixar teste_download.txt → se falhar, reiniciar sessão; (2) se passar, baixar pacote completo; (3) se zip bloqueado, alternativa tar.gz/partes
+- Limitação documentada: gateway de entrega é externo ao sandbox; links de mensagens antigas podem expirar em continuação de sessão
