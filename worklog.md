@@ -113,3 +113,20 @@ Stage Summary:
 - Entregável: download/Roteiro_Video_AV1_SAD_ENCCEJA.pdf (10 págs: capa + sumário + 8 de corpo, 132KB, vetorial, PASS 12/12) + fonte da capa download/Roteiro_Video_AV1_SAD_ENCCEJA_capa_fonte.html
 - DOCX anterior mantido inalterado para referência
 - Serviços ativos: Next.js :3000 · Streamlit :8501
+
+---
+Task ID: 7
+Agent: main (Super Z)
+Task: Corrigir falha de download relatada pelo usuário ("Não estou conseguindo baixar o projeto e nem o roteiro")
+
+Work Log:
+- Diagnóstico: todos os entregáveis íntegros no disco (roteiro PDF 10 págs validado via pypdf; zip do projeto 28 arquivos), mas a PASTA projeto_knn_encceja/ havia perdido os artefatos grandes (modelo_knn.joblib 20MB + CSVs) no reset do ambiente — eles só existiam dentro do zip
+- Restauração: unzip -o projeto_knn_encceja.zip → pasta completa novamente (modelo 20MB + MICRODADOS 4MB + base_processada 9,1MB)
+- Zips reconstruídos do zero com timestamps atuais: projeto_knn_encceja.zip (3,7MB, -9) e dashboard_encceja_nextjs.zip (152KB, exclusões node_modules/.next)
+- Criado LEIA-ME_PRIMEIRO.txt (guia do conteúdo + comandos de execução Streamlit/Next.js)
+- Criado pacote único AV1_SAD_ENCCEJA_PACOTE_COMPLETO.zip (4,1MB): LEIA-ME + projeto_knn_encceja/ completo (com modelo treinado) + dashboard_encceja_nextjs/ + Roteiro PDF + Roteiro DOCX + Guia VSCode PDF — integridade verificada (unzip -t sem erros, modelo_knn.joblib e roteiros confirmados na listagem)
+
+Stage Summary:
+- Solução para o usuário: baixar UM arquivo — download/AV1_SAD_ENCCEJA_PACOTE_COMPLETO.zip (4,1MB) — que contém projeto + dashboard + roteiro (PDF/DOCX) + guia
+- Alternativas individuais regeneradas e íntegras: projeto_knn_encceja.zip (3,7MB), dashboard_encceja_nextjs.zip (152KB), Roteiro_Video_AV1_SAD_ENCCEJA.pdf (132KB), .docx (20KB)
+- Causa provável da falha: links antigos da sessão anterior expirados / tentativa de baixar pasta em vez de zip

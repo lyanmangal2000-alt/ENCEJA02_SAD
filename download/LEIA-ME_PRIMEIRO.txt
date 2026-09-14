@@ -1,0 +1,57 @@
+================================================================
+AV1 - SAD ENCCEJA COM K-NN — PACOTE COMPLETO
+Sistemas de Apoio à Tomada de Decisão | INEP ENCCEJA 2024
+================================================================
+
+CONTEÚDO DO PACOTE
+------------------
+
+1) projeto_knn_encceja/
+   Projeto Python completo do K-NN:
+   - src/          -> pipeline (geração de dados, ETL, features, treino,
+                      recomendações) — 10 módulos
+   - app/          -> app_streamlit.py (interface Streamlit, 3 abas)
+   - modelos/      -> modelo_knn.joblib JÁ TREINADO (k=21, Manhattan,
+                      peso distance, MAE 16,72, acurácia 71,45%)
+   - export/       -> métricas e dados do dashboard (JSON)
+   - data/         -> base sintética 60.000 candidatos + base processada
+   - README.md     -> documentação acadêmica completa (12 seções)
+   - GUIA_VSCODE.md-> passo a passo para abrir no VSCode
+
+   Como executar:
+   > pip install -r requirements.txt
+   > streamlit run app/app_streamlit.py
+
+2) dashboard_encceja_nextjs/
+   Dashboard web Next.js (5 abas: Visão Geral, Simulador K-NN,
+   Recomendação, Análise Exploratória, Modelo & Métricas).
+   O K-NN roda no próprio navegador (TypeScript) — não precisa do
+   modelo Python para funcionar.
+
+   Como executar:
+   > npm install
+   > npm run dev
+   > abrir http://localhost:3000
+
+3) Roteiro_Video_AV1_SAD_ENCCEJA.pdf
+   Roteiro MELHORADO do vídeo (10 páginas): capa, sumário clicável,
+   ficha do vídeo, checklist de preparação, 15 números oficiais,
+   roteiro cena a cena (6 cenas, ~6:30) com narração completa,
+   dicas por cena e perguntas & respostas do avaliador.
+
+4) Roteiro_Video_AV1_SAD_ENCCEJA.docx
+   Versão editável (Word) do roteiro em tabela, caso queira ajustar
+   nomes/datas antes de gravar.
+
+5) Guia_Execucao_VSCODE_SAD_ENCCEJA.pdf
+   Guia visual (8 páginas) para executar o projeto no VSCode do zero.
+
+OBSERVAÇÕES
+-----------
+- O modelo já vem treinado dentro de modelos/modelo_knn.joblib —
+  NÃO é necessário reexecutar o treino; basta rodar o Streamlit.
+- Os dados são sintéticos (60.000 candidatos), gerados com o mesmo
+  schema dos microdados do INEP. Para usar dados reais, veja o
+  data/LEIA-ME.txt.
+- Todos os números citados no roteiro foram extraídos de
+  export/metricas_modelo.json e modelos/metadados_modelo.json.
