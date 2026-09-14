@@ -94,3 +94,22 @@ Stage Summary:
 - Entregável: download/Roteiro_Video_AV1_SAD_ENCCEJA.docx (6 págs: 2 retrato + 4 paisagem), ~830 palavras de fala ≈ 6:30
 - Serviços ativos: Next.js :3000 · Streamlit :8501; screenshot verificacao_dashboard.png em download/
 - Roteiro alinhado ao dashboard real: nomes das abas, presets, corte 100, 21 vizinhos, MAE/acurácia exatos
+
+---
+Task ID: 6
+Agent: main (Super Z)
+Task: Melhorar o roteiro de vídeo e entregar em PDF (pedido do usuário)
+
+Work Log:
+- Skill pdf carregada; cadeia completa lida: SKILL.md, configs/fonts.md, briefs/report.md (1704 linhas), typesetting/{palette,cover,overflow,pagination,typography,fill-engine,cover-backgrounds,geometry,charts}.md
+- Números re-verificados nos artefatos: MAE 16,72/RMSE 21,09, acurácia 71,45%, k=21 Manhattan (melhor busca uniform RMSE CV 19,3254; final distance por decisão de negócio), treino 28.847/teste 7.212, 28 configs × 5 folds; KPIs da base (60.000/46.171/36.059/78,1%, aprovação 37,7–38,3%, média ~92/200); abas reais do dashboard confirmadas em src/app/page.tsx (Visão Geral, Simulador K-NN, Recomendação, Análise Exploratória, Modelo & Métricas) e presets "Exemplo: alto risco"/"Exemplo: favorável"
+- Rota Report (ReportLab) + Template 07 Crystal Blue (capa escura coerente com o dashboard; paleta fixa do template no corpo: #f5f8fc/#1a4a7a/#2d7ab3/#142840/#5a7a96)
+- Melhorias sobre o DOCX: capa Template 07; Sumário clicável (TocDocTemplate + multiBuild, numeração exibida = rodapé: romano i no sumário, arábico reiniciado no corpo); roteiro em blocos por cena (barra de cabeçalho + NA TELA + direção itálico + narração verbatim + DICA com borda accent) em vez de tabela paisagem; faixa de 3 stats; tabela de 15 números oficiais; nova seção de 6 Q&A do avaliador; narração enriquecida (~875 palavras ≈ 6:30)
+- Scripts persistidos: scripts/roteiro_conteudo.py (conteúdo), scripts/gerar_corpo_roteiro.py (ReportLab), scripts/capa_roteiro.html (Template 07), scripts/montar_roteiro_final.py (pypdf merge)
+- Correções por iteração: (1) Noto Sans SC estático inexistente → registrado com NotoSerifSC (documento 100% latino, apenas p/ cadeia de fallback); (2) fonte variável rejeitada pelo ReportLab → mesmo ajuste; (3) TOC com página interna ≠ rodapé → afterFlowable notifica página exibida; (4) capa 595,9pt vs corpo 595,3pt → normalize com tolerância 0,1pt; (5) travessão em início de linha (pág. 8) → vírgula
+- QA final: poster_validate PASS + cover_validate sem sobreposições; pdf_qa.py --skip-cover = PASS 12/12; font.check 0; pages.clean 0; inspeção visual das 10 páginas OK (capa, sumário, ficha/checklist, stats+tabela 15 linhas com repeatRows, mapa, 6 blocos de cena, 6 Q&A, export)
+
+Stage Summary:
+- Entregável: download/Roteiro_Video_AV1_SAD_ENCCEJA.pdf (10 págs: capa + sumário + 8 de corpo, 132KB, vetorial, PASS 12/12) + fonte da capa download/Roteiro_Video_AV1_SAD_ENCCEJA_capa_fonte.html
+- DOCX anterior mantido inalterado para referência
+- Serviços ativos: Next.js :3000 · Streamlit :8501
