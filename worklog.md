@@ -147,3 +147,17 @@ Stage Summary:
 - download/ limpo: AV1_SAD_ENCCEJA_PACOTE_COMPLETO.zip (4,2MB, tudo dentro) + 2 zips + roteiro PDF/DOCX + guia PDF + teste_download.txt
 - Protocolo de isolamento sugerido ao usuário: (1) baixar teste_download.txt → se falhar, reiniciar sessão; (2) se passar, baixar pacote completo; (3) se zip bloqueado, alternativa tar.gz/partes
 - Limitação documentada: gateway de entrega é externo ao sandbox; links de mensagens antigas podem expirar em continuação de sessão
+
+---
+Task ID: 9
+Agent: main (Super Z)
+Task: Criar documento "Resultado Esperado" em formato MD (pedido do usuário)
+
+Work Log:
+- Números re-extraídos dos artefatos: metricas_modelo.json (MAE 16,72 / RMSE 21,09 / acurácia 71,45% / busca k=21 uniform manhattan RMSE CV 19,3254 / final distance / treino 28.847+teste 7.212 / 28 configs=7k×2pesos×2métricas), dados_dashboard.json (kpis: 46.171 presentes, 36.059 completos 78,1%, aprovação 37,7–38,3%, médias ~92/200, n_amostra 2937)
+- Critérios de pontuação da AV1 extraídos de upload/prompt_projeto_knn_encceja.md §7 (script 2,0 + interface 2,0 + vídeo 1,0 = 5,0 → lina@ls4business.com.br)
+- Criado download/Resultado_Esperado_AV1_SAD_ENCCEJA.md (10,6KB, 190 linhas, 9 seções, 18 tabelas): mapa critério→status, base sintética, pipeline passo a passo, busca/métricas exatas, dashboard (presets 76–81 / 104–111), Streamlit, recomendações 3 níveis, checklist de conferência, inventário de arquivos
+
+Stage Summary:
+- Entregável: download/Resultado_Esperado_AV1_SAD_ENCCEJA.md (UTF-8 verificado, 100% dos números das fontes reais)
+- download/ permanece com 13 arquivos planos ≤4,2MB
