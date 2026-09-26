@@ -1,0 +1,17 @@
+# dependências
+/node_modules
+
+# build e cache do Next.js
+/.next
+/out
+
+# ambientes
+.env*
+
+# logs e sistema
+*.log
+.DS_Store
+
+# TypeScript incremental
+*.tsbuildinfo
+next-env.d.ts

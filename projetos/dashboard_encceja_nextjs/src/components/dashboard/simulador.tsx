@@ -61,7 +61,7 @@ export type ResultadoSimulacao = {
   parecer: Parecer;
 };
 
-// Presets para demonstração (roteiro do vídeo: 2 perfis em contraste)
+// Presets para demonstração (2 perfis em contraste)
 const PRESET_ALTO_RISCO: PerfilCandidato = {
   sexo: "F",
   faixa: 10,

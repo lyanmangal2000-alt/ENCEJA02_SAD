@@ -16,7 +16,7 @@
 |---|---|---|---|
 | Script documentado (dados, ETL, algoritmo, justificativas) — GitHub | 2,0 | `projeto_knn_encceja/` com 10 módulos em `src/` + `README.md` acadêmico (12 seções) com justificativas de negócio | ✅ Atendido |
 | Interface funcional com recomendações ao gestor | 2,0 | Dashboard Next.js (5 abas) + Streamlit (3 abas), motor de recomendações em 3 níveis de risco | ✅ Atendido |
-| Vídeo demonstrando implementação, interface e execução | 1,0 | Roteiro completo pronto para gravação (`Roteiro_Video_AV1_SAD_ENCCEJA.pdf` / `.docx`, ~6:30, 6 cenas) | ✅ Roteiro pronto — gravar e enviar |
+| Vídeo demonstrando implementação, interface e execução | 1,0 | A gravar — o material de apoio à filmagem não integra o pacote de publicação | ⚠️ Pendente (a gravar) |
 | **Total** | **5,0** | Enviar (GitHub + interface + vídeo) para **lina@ls4business.com.br** | — |
 
 ---
@@ -167,7 +167,7 @@ com os números do perfil (taxa de vizinhos aprovados, distância ao corte de 10
 - [ ] Preset "Exemplo: favorável" → notas 104–111 e parecer verde (BAIXO)
 - [ ] Métricas na aba Modelo batem com este documento (MAE 16,72 · 71,45%)
 - [ ] README.md revisado (justificativas de negócio + limitações)
-- [ ] Vídeo gravado seguindo `Roteiro_Video_AV1_SAD_ENCCEJA.pdf` (~6:30, 6 cenas)
+- [ ] Vídeo demonstrativo gravado (implementação, interface e execução, ~6 minutos)
 - [ ] Publicar no GitHub e enviar: link do repo + interface + vídeo → **lina@ls4business.com.br**
 
 ---
@@ -178,9 +178,8 @@ com os números do perfil (taxa de vizinhos aprovados, distância ao corte de 10
 |---|---|
 | `projeto_knn_encceja.zip` (3,7 MB) | Projeto Python completo: 10 módulos `src/`, Streamlit, modelo treinado (20 MB), bases CSV, README acadêmico |
 | `dashboard_encceja_nextjs.zip` (152 KB) | Dashboard Next.js standalone (5 abas), KNN em TypeScript no navegador |
-| `AV1_SAD_ENCCEJA_PACOTE_COMPLETO.zip` (4,2 MB) | Tudo o que está acima + roteiro + guia, em um único download |
-| `Roteiro_Video_AV1_SAD_ENCCEJA.pdf` (132 KB) | Roteiro melhorado do vídeo: 10 págs, capa, sumário, 6 cenas com fala completa, Q&A do avaliador |
-| `Roteiro_Video_AV1_SAD_ENCCEJA.docx` (20 KB) | Versão editável do roteiro em tabela |
+| `AV1_SAD_ENCCEJA_PROJETO_LIMPO_GITHUB.zip` | **ARQUIVO 1** — projeto completo e limpo (Python + dashboard Next.js), pronto para publicação no GitHub |
+| `Resultado_Esperado_AV1_SAD_ENCCEJA.md` | **ARQUIVO 2** — este documento, disponibilizado separadamente |
 | `Guia_Execucao_VSCODE_SAD_ENCCEJA.pdf` (176 KB) | Guia visual de execução no VSCode (8 págs) |
 | `LEIA-ME_PRIMEIRO.txt` | Instruções rápidas de execução dos dois projetos |
 

@@ -161,3 +161,23 @@ Work Log:
 Stage Summary:
 - Entregável: download/Resultado_Esperado_AV1_SAD_ENCCEJA.md (UTF-8 verificado, 100% dos números das fontes reais)
 - download/ permanece com 13 arquivos planos ≤4,2MB
+
+---
+Task ID: 10
+Agent: main (Super Z)
+Task: Limpeza completa do projeto para GitHub + entrega em 2 arquivos (projeto limpo + Resultados Esperados)
+
+Work Log:
+- Varredura inicial (nomes + conteúdo + interior de zips): 11 arquivos "oteiro" (download/, scripts/, scripts/build/, upload/), 1 prompt de upload (upload/prompt_projeto_knn_encceja.md), 0 arquivos "Introdução à Ciência de Dados"; 1 referência em conteúdo (comentário no simulador.tsx)
+- Removido DEFINITIVAMENTE: Roteiro PDF/DOCX/capa_html, PACOTE_COMPLETO.zip (continha roteiros), teste_download.txt, README.md placeholder, pastas re-sincronizadas em download/, 2 uploads (prompt+roteiro), 5 scripts geradores de roteiro + 2 builds PDF, scripts/test_dash/ (cópia de teste com referência proibida), verificacao_dashboard.png movida p/ projetos/
+- Corrigido: comentário do simulador.tsx reescrito (sem efeito funcional); LEIA-ME_PRIMEIRO.txt reescrito; Resultado_Esperado MD atualizado (linha do vídeo, checklist, inventário); .gitignore criado p/ dashboard; LEIA-ME_GITHUB.md criado p/ raiz do repo
+- DESCOBERTA CRÍTICA: plataforma descarta arquivos >~10MB na sincronização — modelo_knn.joblib (20MB) + CSVs (13MB) sumiram da pasta projetos/ após o mv; zips antigos já removidos
+- SOLUÇÃO: pipeline regenerado de ponta a ponta (semente 42 determinística): gerar_dados (77,0% presença, média 92,1 — idêntico) → etl (46.171/36.059 — idêntico) → features (28.847/7.212 — idêntico) → treino (MAE 16,72/RMSE 21,09/71,45% — IDÊNTICO); JSONs comparados ao backup: metricas e metadados BYTE-IDÊNTICOS, dados_dashboard só difere no gerado_em; modelo carrega com 28.847 vizinhos
+- Zips reconstruídos com artefatos completos: projeto_knn_encceja.zip (3,7MB), dashboard_encceja_nextjs.zip (152KB), AV1_SAD_ENCCEJA_PROJETO_LIMPO_GITHUB.zip (3,9MB, 66 arquivos) — integridade unzip -t OK
+- Verificação final automatizada (scripts/verificacao_final_limpeza.py): 14 checks = TODOS PASSARAM (regex refinada p/ não confundir "Prompt de comando" do guia com prompt de upload; auto-referência excluída)
+
+Stage Summary:
+- ARQUIVO 1: download/AV1_SAD_ENCCEJA_PROJETO_LIMPO_GITHUB.zip (3,9MB — LEIA-ME_GITHUB.md + projeto_knn_encceja/ completo c/ modelo treinado + dashboard_encceja_nextjs/ c/ .gitignore)
+- ARQUIVO 2: download/Resultado_Esperado_AV1_SAD_ENCCEJA.md (separado, atualizado)
+- Apoio mantido: zips individuais + Guia_Execucao PDF/HTML + LEIA-ME_PRIMEIRO.txt (6 arquivos em download/, todos planos)
+- Fonte da verdade p/ edições futuras: /home/z/my-project/projetos/ (aviso: arquivos >10MB podem não persistir entre sessões — regenerar via pipeline semente 42 se necessário)

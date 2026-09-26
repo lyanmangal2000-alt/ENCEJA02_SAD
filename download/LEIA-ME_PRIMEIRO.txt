@@ -1,10 +1,10 @@
 ================================================================
-AV1 - SAD ENCCEJA COM K-NN — PACOTE COMPLETO
+AV1 - SAD ENCCEJA COM K-NN — GUIA DO PACOTE (VERSÃO LIMPA)
 Sistemas de Apoio à Tomada de Decisão | INEP ENCCEJA 2024
 ================================================================
 
-CONTEÚDO DO PACOTE
-------------------
+CONTEÚDO
+--------
 
 1) projeto_knn_encceja/
    Projeto Python completo do K-NN:
@@ -17,6 +17,7 @@ CONTEÚDO DO PACOTE
    - data/         -> base sintética 60.000 candidatos + base processada
    - README.md     -> documentação acadêmica completa (12 seções)
    - GUIA_VSCODE.md-> passo a passo para abrir no VSCode
+   - .gitignore    -> pronto para publicação no GitHub
 
    Como executar:
    > pip install -r requirements.txt
@@ -33,18 +34,11 @@ CONTEÚDO DO PACOTE
    > npm run dev
    > abrir http://localhost:3000
 
-3) Roteiro_Video_AV1_SAD_ENCCEJA.pdf
-   Roteiro MELHORADO do vídeo (10 páginas): capa, sumário clicável,
-   ficha do vídeo, checklist de preparação, 15 números oficiais,
-   roteiro cena a cena (6 cenas, ~6:30) com narração completa,
-   dicas por cena e perguntas & respostas do avaliador.
-
-4) Roteiro_Video_AV1_SAD_ENCCEJA.docx
-   Versão editável (Word) do roteiro em tabela, caso queira ajustar
-   nomes/datas antes de gravar.
-
-5) Guia_Execucao_VSCODE_SAD_ENCCEJA.pdf
-   Guia visual (8 páginas) para executar o projeto no VSCode do zero.
+3) Resultado_Esperado_AV1_SAD_ENCCEJA.md
+   Documento com o resultado esperado em cada etapa do projeto
+   (critérios da AV1, métricas exatas do modelo, comportamento das
+   interfaces e checklist de conferência). Disponibilizado também
+   separadamente para download.
 
 OBSERVAÇÕES
 -----------
@@ -53,5 +47,6 @@ OBSERVAÇÕES
 - Os dados são sintéticos (60.000 candidatos), gerados com o mesmo
   schema dos microdados do INEP. Para usar dados reais, veja o
   data/LEIA-ME.txt.
-- Todos os números citados no roteiro foram extraídos de
-  export/metricas_modelo.json e modelos/metadados_modelo.json.
+- Todos os números citados no documento de resultados esperados
+  foram extraídos de export/metricas_modelo.json e
+  modelos/metadados_modelo.json.
