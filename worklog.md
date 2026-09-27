@@ -181,3 +181,18 @@ Stage Summary:
 - ARQUIVO 2: download/Resultado_Esperado_AV1_SAD_ENCCEJA.md (separado, atualizado)
 - Apoio mantido: zips individuais + Guia_Execucao PDF/HTML + LEIA-ME_PRIMEIRO.txt (6 arquivos em download/, todos planos)
 - Fonte da verdade p/ edições futuras: /home/z/my-project/projetos/ (aviso: arquivos >10MB podem não persistir entre sessões — regenerar via pipeline semente 42 se necessário)
+
+---
+Task ID: 10-b
+Agent: main (Super Z)
+Task: Re-checagem — usuário relatou que o prompt da limpeza ainda estaria dentro do projeto
+
+Work Log:
+- upload/ vazio (confirmado); varredura de fragments de TODAS as mensagens do usuário em todo o workspace: 0 arquivos; varredura de arquivos recentes (2 dias): apenas artefatos próprios (worklog, verificador, backups, pipeline regenerado, zips)
+- Interior dos 3 zips auditado: somente tipos esperados (.py/.md/.txt/.json/.ts/.tsx/.css/.svg/joblib/.csv/.gitignore); GitHub zip = 66 arquivos, todos de projeto + LEIA-ME_GITHUB.md
+- Conclusão: o prompt da limpeza NÃO existe como arquivo no projeto; o que o usuário vê é o anexo/histórico da conversa (lado da plataforma, fora do workspace) — não vai para o GitHub
+- Nota: único arquivo com texto similar é scripts/verificacao_final_limpeza.py (ferramenta interna de auditoria, fora da entrega) — mantido
+
+Stage Summary:
+- Entrega permanece limpa e inalterada; 14/14 checks passaram novamente
+- Se a plataforma re-sincronizar uploads antigos em upload/ (já ocorreu com download/), deletar novamente a pedido
